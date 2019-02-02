@@ -5,6 +5,7 @@ using QuickGraph.Collections;
 using QuickGraph.Algorithms.Observers;
 using QuickGraph.Algorithms.Services;
 using System.Diagnostics.Contracts;
+using System.Linq;
 
 namespace QuickGraph.Algorithms.Search
 {
@@ -25,11 +26,19 @@ namespace QuickGraph.Algorithms.Search
     {
         private IDictionary<TVertex, GraphColor> vertexColors;
         private IQueue<TVertex> vertexQueue;
+        private IQueue<TVertex> rootQueue;
         private readonly Func<IEnumerable<TEdge>, IEnumerable<TEdge>> outEdgeEnumerator;
 
         public BreadthFirstSearchAlgorithm(IVertexListGraph<TVertex,TEdge> g)
             : this(g, new QuickGraph.Collections.Queue<TVertex>(), new Dictionary<TVertex, GraphColor>())
         {}
+
+        private bool _sorted;
+        public BreadthFirstSearchAlgorithm(IVertexListGraph<TVertex, TEdge> g, bool sorted)
+            : this(g, new QuickGraph.Collections.Queue<TVertex>(), new Dictionary<TVertex, GraphColor>())
+        {
+            _sorted = sorted;
+        }
 
         public BreadthFirstSearchAlgorithm(
             IVertexListGraph<TVertex, TEdge> visitedGraph,
@@ -64,6 +73,8 @@ namespace QuickGraph.Algorithms.Search
             this.vertexColors = vertexColors;
             this.vertexQueue = vertexQueue;
             this.outEdgeEnumerator = outEdgeEnumerator;
+
+            this.rootQueue = new QuickGraph.Collections.Queue<TVertex>();
         }
 
         public Func<IEnumerable<TEdge>, IEnumerable<TEdge>> OutEdgeEnumerator
@@ -211,44 +222,51 @@ namespace QuickGraph.Algorithms.Search
             this.VertexColors[s] = GraphColor.Gray;
 
             OnDiscoverVertex(s);
-            this.vertexQueue.Enqueue(s);
+            this.rootQueue.Enqueue(s);
         }
 
         private void FlushVisitQueue()
         {
             var cancelManager = this.Services.CancelManager;
             var oee = this.OutEdgeEnumerator;
-
-            while (this.vertexQueue.Count > 0)
+            while (this.rootQueue.Count > 0 )
             {
                 if (cancelManager.IsCancelling) return;
 
-                var u = this.vertexQueue.Dequeue();
-                this.OnExamineVertex(u);
-                foreach (var e in oee(this.VisitedGraph.OutEdges(u)))
-                {
-                    TVertex v = e.Target;
-                    this.OnExamineEdge(e);
+                this.vertexQueue.Enqueue(this.rootQueue.Dequeue());
 
-                    var vColor = this.VertexColors[v];
-                    if (vColor == GraphColor.White)
+                while (this.vertexQueue.Count > 0)
+                {
+                    var u = this.vertexQueue.Dequeue();
+                    this.OnExamineVertex(u);
+                    var visited = _sorted ? oee(this.VisitedGraph.OutEdges(u)).OrderBy(e => VisitedGraph.OutDegree(e.Target)) :
+                        oee(this.VisitedGraph.OutEdges(u));
+                    foreach (var e in visited)
                     {
-                        this.OnTreeEdge(e);
-                        this.VertexColors[v] = GraphColor.Gray;
-                        this.OnDiscoverVertex(v);
-                        this.vertexQueue.Enqueue(v);
-                    }
-                    else
-                    {
-                        this.OnNonTreeEdge(e);
-                        if (vColor == GraphColor.Gray)
-                            this.OnGrayTarget(e);
+                        TVertex v = e.Target;
+                        this.OnExamineEdge(e);
+
+                        var vColor = this.VertexColors[v];
+                        if (vColor == GraphColor.White)
+                        {
+                            this.OnTreeEdge(e);
+                            this.VertexColors[v] = GraphColor.Gray;
+                            this.OnDiscoverVertex(v);
+                            this.vertexQueue.Enqueue(v);
+                        }
                         else
-                            this.OnBlackTarget(e);
+                        {
+                            this.OnNonTreeEdge(e);
+                            if (vColor == GraphColor.Gray)
+                                this.OnGrayTarget(e);
+                            else
+                                this.OnBlackTarget(e);
+                        }
                     }
+                    this.VertexColors[u] = GraphColor.Black;
+                    this.OnFinishVertex(u);
                 }
-                this.VertexColors[u] = GraphColor.Black;
-                this.OnFinishVertex(u);
+
             }
         }
     }
