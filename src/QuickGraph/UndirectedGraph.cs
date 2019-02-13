@@ -456,8 +456,17 @@ namespace QuickGraph
             var source = edge.Source;
             var target= edge.Target;
             foreach (var e in edges)
-                if (this.EdgeEqualityComparer(e,source, target))
+            {
+                if (this.EdgeEqualityComparer(e, source, target))
                     return true;
+                //something says to me that in undirected graph with no direction on edges
+                //parallel edges are those which connect u and v regardless of the direction
+                // so need to skip both?
+                if (this.EdgeEqualityComparer(e, target, source))
+                    return true;
+
+            }
+
             return false;
         }
         #endregion
