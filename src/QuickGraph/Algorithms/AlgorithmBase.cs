@@ -76,6 +76,35 @@ namespace QuickGraph.Algorithms
             this.EndComputation();
         }
 
+        // this block is to reflect a possibility ro run computation multiple times
+        // for cases when we've got multiple roots in the same graph
+        // so we need to run the algoritm multiple times agains the same graph
+        // within a single transaction
+        // To avoid changing the base type to have Compute(TVertex). 
+        // This would require massive chnage in child types.
+        public void PreCompute()
+        {
+            this.BeginComputation();
+            this.Initialize();
+        }
+
+        public void MultyVertexCompute()
+        {
+            try
+            {
+                this.InternalCompute();
+            }
+            finally
+            {
+                this.Clean();
+            }
+        }
+
+        public void PostCompute()
+        {
+            this.EndComputation();
+        }
+
         protected virtual void Initialize()
         { }
 

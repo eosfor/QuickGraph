@@ -67,5 +67,21 @@ namespace QuickGraph.Algorithms
             this.SetRootVertex(rootVertex);
             this.Compute();
         }
+
+        // adding support vor multy-root computation
+        public void Compute(TVertex[] rootVertex)
+        {
+            Contract.Requires(rootVertex != null);
+
+            this.PreCompute();
+
+            foreach (var v in rootVertex)
+            {
+                this.SetRootVertex(v);
+                this.MultyVertexCompute();
+            }
+
+            this.PostCompute();
+        }
     }
 }
