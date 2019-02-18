@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="QuickGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iKAMwLQgEKRAABAoWjAgAAEzAAAAQDII0EhGAADYABQ=</HashCode>
+      <FileName>BidirectionalGraph.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="QuickGraph.UndirectedGraph&lt;TVertex, TEdge&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCJOgCAAAqRAABEIWjAJAAGxAAAABiIA0EhWAADQAjQ=</HashCode>
+      <FileName>UndirectedGraph.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="QuickGraph.IMutableVertexListGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="6.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IMutableVertexListGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IMutableUndirectedGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="3.25" Y="9" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IMutableUndirectedGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IMutableIncidenceGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="6.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgACAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IMutableIncidenceGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IMutableVertexSet&lt;TVertex&gt;" Collapsed="true">
+    <Position X="12.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAAAAAAABAAAAACAAAAAAAAAQABA=</HashCode>
+      <FileName>IMutableVertexSet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IMutableEdgeListGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="4.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEACAAAABAAAAACgAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>IMutableEdgeListGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IUndirectedGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="2" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IUndirectedGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IMutableVertexAndEdgeSet&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="1.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAA=</HashCode>
+      <FileName>IMutableVertexAndEdgeSet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IMutableGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="16.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>IMutableGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IEdgeListGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IEdgeListGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="3.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IVertexAndEdgeListGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IVertexListGraph&lt;TVertex, TEdge&gt;">
+    <Position X="3.25" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IVertexListGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IBidirectionalGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="10" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IBidirectionalGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IMutableVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="4.5" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IMutableVertexAndEdgeListGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IHierarchy&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="7.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAIAhAAAAQCAAAAAAAAAAAAAAAAAABAUAAAQAAAA=</HashCode>
+      <FileName>IHierarchy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IMutableBidirectionalGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="7.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>IMutableBidirectionalGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IVertexSet&lt;TVertex&gt;" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAEAAAAACAAAA=</HashCode>
+      <FileName>IVertexSet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IImplicitVertexSet&lt;TVertex&gt;" Collapsed="true">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>IImplicitVertexSet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IIncidenceGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAECAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IIncidenceGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IEdgeListAndIncidenceGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="6.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IEdgeListAndIncidenceGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.IBidirectionalIncidenceGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAQAAAAAAAAAAAAAAAASAAAAAAAAAAAAAACAABA=</HashCode>
+      <FileName>IBidirectionalIncidenceGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="QuickGraph.ITermBidirectionalGraph&lt;TVertex, TEdge&gt;" Collapsed="true">
+    <Position X="10.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACIIAAAAASAAAAAAAAACABAgBAEAAA=</HashCode>
+      <FileName>ITermBidirectionalGraph.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

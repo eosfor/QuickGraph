@@ -146,7 +146,78 @@ this
         }
 
         /// <summary>
-        /// Computes a depth first tree.
+        /// Computes a depth first tree for undirected graph.
+        /// </summary>
+        /// <typeparam name="TVertex">The type of the vertex.</typeparam>
+        /// <typeparam name="TEdge">The type of the edge.</typeparam>
+        /// <param name="visitedGraph">The visited graph.</param>
+        /// <param name="root">The root.</param>
+        /// <returns></returns>
+        public static TryFunc<TVertex, IEnumerable<TEdge>> TreeBreadthFirstSearch<TVertex, TEdge>(
+#if !NET20
+this
+#endif
+            IUndirectedGraph<TVertex, TEdge> visitedGraph,
+    TVertex[] root)
+    where TEdge : IEdge<TVertex>
+        {
+            Contract.Requires(visitedGraph != null);
+            Contract.Requires(root != null);
+            foreach (var r in root)
+            {
+                Contract.Requires(visitedGraph.ContainsVertex(r));
+            }
+            
+            Contract.Ensures(Contract.Result<TryFunc<TVertex, IEnumerable<TEdge>>>() != null);
+
+            var algo = new UndirectedBreadthFirstSearchAlgorithm<TVertex, TEdge>(visitedGraph);
+            var predecessorRecorder = new UndirectedVertexPredecessorRecorderObserver<TVertex, TEdge>();
+            using (predecessorRecorder.Attach(algo))
+                algo.Compute(root);
+
+            var predecessors = predecessorRecorder.VertexPredecessors;
+            return delegate (TVertex v, out IEnumerable<TEdge> edges)
+            {
+                return EdgeExtensions.TryGetPath(predecessors, v, out edges);
+            };
+        }
+
+
+        /// <summary>
+        /// Computes a depth first tree for undirected graph, and returns a recorded path
+        /// </summary>
+        /// <typeparam name="TVertex">The type of the vertex.</typeparam>
+        /// <typeparam name="TEdge">The type of the edge.</typeparam>
+        /// <param name="visitedGraph">The visited graph.</param>
+        /// <param name="root">The root.</param>
+        /// <returns>IDictionary</returns>
+        public static IDictionary<TVertex, TEdge> RecordTreeBreadthFirstSearch<TVertex, TEdge>(
+#if !NET20
+this
+#endif
+            IUndirectedGraph<TVertex, TEdge> visitedGraph,
+    TVertex[] root)
+    where TEdge : IEdge<TVertex>
+        {
+            Contract.Requires(visitedGraph != null);
+            Contract.Requires(root != null);
+            foreach (var r in root)
+            {
+                Contract.Requires(visitedGraph.ContainsVertex(r));
+            }
+
+            Contract.Ensures(Contract.Result<TryFunc<TVertex, IEnumerable<TEdge>>>() != null);
+
+            var algo = new UndirectedBreadthFirstSearchAlgorithm<TVertex, TEdge>(visitedGraph);
+            var predecessorRecorder = new UndirectedVertexPredecessorRecorderObserver<TVertex, TEdge>();
+            using (predecessorRecorder.Attach(algo))
+                algo.Compute(root);
+
+            return predecessorRecorder.VertexPredecessors;
+        }
+
+        /// <summary>
+        /// Computes a depth first tree, and returns a delegate to look for a path
         /// </summary>
         /// <typeparam name="TVertex">The type of the vertex.</typeparam>
         /// <typeparam name="TEdge">The type of the edge.</typeparam>
@@ -176,6 +247,76 @@ this
             {
                 return EdgeExtensions.TryGetPath(predecessors, v, out edges);
             };
+        }
+
+        /// <summary>
+        /// Computes a depth first tree for undirected graph, and returns a delegate to look for a path
+        /// </summary>
+        /// <typeparam name="TVertex">The type of the vertex.</typeparam>
+        /// <typeparam name="TEdge">The type of the edge.</typeparam>
+        /// <param name="visitedGraph">The visited graph.</param>
+        /// <param name="root">The root.</param>
+        /// <returns></returns>
+        public static TryFunc<TVertex, IEnumerable<TEdge>> TreeDepthFirstSearch<TVertex, TEdge>(
+#if !NET20
+this
+#endif
+            IUndirectedGraph<TVertex, TEdge> visitedGraph,
+            TVertex[] root)
+            where TEdge : IEdge<TVertex>
+        {
+            Contract.Requires(visitedGraph != null);
+            Contract.Requires(root != null);
+            foreach (var r in root)
+            {
+                Contract.Requires(visitedGraph.ContainsVertex(r));
+            }
+            
+            Contract.Ensures(Contract.Result<TryFunc<TVertex, IEnumerable<TEdge>>>() != null);
+
+            var algo = new UndirectedBreadthFirstSearchAlgorithm<TVertex, TEdge>(visitedGraph);
+            var predecessorRecorder = new UndirectedVertexPredecessorRecorderObserver<TVertex, TEdge>();
+            using (predecessorRecorder.Attach(algo))
+                algo.Compute(root);
+
+            var predecessors = predecessorRecorder.VertexPredecessors;
+            return delegate (TVertex v, out IEnumerable<TEdge> edges)
+            {
+                return EdgeExtensions.TryGetPath(predecessors, v, out edges);
+            };
+        }
+
+        /// <summary>
+        /// Computes a depth first tree for undirected graph, and returns a recorded path
+        /// </summary>
+        /// <typeparam name="TVertex">The type of the vertex.</typeparam>
+        /// <typeparam name="TEdge">The type of the edge.</typeparam>
+        /// <param name="visitedGraph">The visited graph.</param>
+        /// <param name="root">The root.</param>
+        /// <returns></returns>
+        public static IDictionary<TVertex, TEdge> RecordTreeDepthFirstSearch<TVertex, TEdge>(
+#if !NET20
+this
+#endif
+            IUndirectedGraph<TVertex, TEdge> visitedGraph,
+            TVertex[] root)
+            where TEdge : IEdge<TVertex>
+        {
+            Contract.Requires(visitedGraph != null);
+            Contract.Requires(root != null);
+            foreach (var r in root)
+            {
+                Contract.Requires(visitedGraph.ContainsVertex(r));
+            }
+
+            Contract.Ensures(Contract.Result<TryFunc<TVertex, IEnumerable<TEdge>>>() != null);
+
+            var algo = new UndirectedBreadthFirstSearchAlgorithm<TVertex, TEdge>(visitedGraph);
+            var predecessorRecorder = new UndirectedVertexPredecessorRecorderObserver<TVertex, TEdge>();
+            using (predecessorRecorder.Attach(algo))
+                algo.Compute(root);
+
+            return predecessorRecorder.VertexPredecessors;
         }
 
         public static TryFunc<TVertex, IEnumerable<TEdge>> TreeCyclePoppingRandom<TVertex, TEdge>(

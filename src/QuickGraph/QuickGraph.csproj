@@ -497,6 +497,8 @@
   <ItemGroup>
     <None Include="Algorithms\Cliques\ncliques.pdf" />
     <Content Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="paket.references" />
     <None Include="quickgraph.snk" />
     <None Include="Diagrams\TraversalInterfaces.cd" />
