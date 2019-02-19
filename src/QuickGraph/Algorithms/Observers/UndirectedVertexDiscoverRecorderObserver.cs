@@ -48,7 +48,6 @@ namespace QuickGraph.Algorithms.Observers
         private void DiscoverVertex(TVertex vertex)
         {
             discoveredVertices.Add(vertex);
-            //throw new NotImplementedException();
         }
     }
 }
